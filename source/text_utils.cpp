@@ -10,6 +10,7 @@ std::vector<std::string> zeroWidthChars = {
 };
 
 std::vector<std::string> invisibleChars = { //atleast in val.
+  //utf-16 fills two character space. bummer.
   "\u15AF", //b
   "\U0001D5BC", //c
   "\U0001D5BF", //f
@@ -22,10 +23,15 @@ std::string randomPickChar(const std::vector<std::string>& charVector) {
   return charVector[dist(def_rng)];
 }
 
-void insertActor(char letter, int repetitions, std::string& result) {
+void insertActor(char letter, int strsize, std::string& result) {
+  int repetition = 1;
+  repetition = repDist(def_rng);
+  if(strsize > 80) repetition = 1;
+
   result += letter;
-  for (int i = 1; i <= repetitions; i++) {
-    if (randBool(def_rng) || repetitions == 1) result += randomPickChar(invisibleChars);
-    if (randBool(def_rng) && repetitions >= 2) result += randomPickChar(zeroWidthChars);
+  for(int i = 1; i <= repetition; i++) {
+    if(randBool(def_rng) && repetition == 1) result += "\u15AF";
+    if(randBool(def_rng) || repetition != 1) result += randomPickChar(invisibleChars);
+    if(randBool(def_rng) && randBool(def_rng) && strsize <= 120) result += randomPickChar(zeroWidthChars);
   }
 }
