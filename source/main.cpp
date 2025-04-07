@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <csignal>
-#include <windows.h>
 
 #include "random_utils.h"
 #include "text_utils.h"
@@ -18,11 +17,11 @@ int main() {
   std::string sentence;
   std::string result;
 
-  std::cout << "Valfilter.\nCharacter limit is 250. Use wisely." << std::endl;
-  std::cout << "Ctrl + C to close the program." << std::endl << std::endl;
+  std::cout << "Valfilter\nCharacter limit is 200. Use wisely." << std::endl;
+  std::cout << "Ctrl + C to close the program." << std::endl;
   
   while (true) {
-    std::cout << "\nEnter your message: ";
+    std::cout << "\n\nEnter your message: ";
     std::getline(std::cin, sentence);
 
     if(sentence.size() > 200) {
@@ -37,9 +36,13 @@ int main() {
       insertActor(letter, sentence.size(), result);
     }
 
-    std::cout << "\n\nBlock the text below and copy using Ctrl + Shift + C" << "\n-----------------------------------" << std::endl;
-    std::cout << std::endl << result << std::endl;
-    std::cout << std::endl << "-----------------------------------" << std::endl;
+    clipboardCopy(utf8to16(result));
+
+    std::cout << "\nText copied to the clipboard. Paste it to your chat." << std::endl;
+
+    /*std::cout << "\nif it dont work : Block-copy this with Ctrl + Shift + C" << "\n-----------------------------------" << std::endl;*/
+    /*std::cout << result << std::endl;*/
+    /*std::cout << "-----------------------------------" << std::endl;*/
 
     result.clear();
   }
