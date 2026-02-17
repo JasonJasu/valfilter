@@ -1,3 +1,4 @@
+#CXX = x86_64-w64-mingw32-g++					#<- Uncomment this for universal executable. Requires MSYS2
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -I./include
 LDFLAGS = -static -static-libgcc -static-libstdc++
