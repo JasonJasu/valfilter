@@ -19,7 +19,7 @@ been personally using it for a while. works 90% of all time (better than nothing
 
 ## Download
 
-<a href=https://github.com/JasonJasu/valfilter/releases>https://github.com/JasonJasu/valfilter/releases></a>
+<a href=https://github.com/JasonJasu/valfilter/releases>https://github.com/JasonJasu/valfilter/releases</a>
 
 ## Compile it yourself?
 
